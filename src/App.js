@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { questions } from "./questions";
+import bgMobile from "./images/background-pattern-mobile.svg";
+import bgDesktop from "./images/background-pattern-desktop.svg";
+import star from "./images/icon-star.svg";
+import Question from "./Question";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <picture>
+        <source media="(min-width: 640px)" srcSet={bgDesktop} />
+        <img src={bgMobile} alt="" />
+      </picture>
+
+      <div className="container">
+        <h1>
+          <img src={star} alt="" /> FAQs
+        </h1>
+
+        <div className="questions-container">
+          {questions.map((question, index) => (
+            <Question key={index} {...question} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
-
-export default App;
